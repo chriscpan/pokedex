@@ -8,7 +8,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
       $div.append(attr + ': ' + pokemon.get(attr) + '<br>');
     }
   }
-  this.$pokeDetail.html($div)
+  this.$pokeDetail.html($div);
 };
 
 Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
