@@ -2,6 +2,7 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
   var $div = $('<div></div>');
   $div.addClass('detail');
   var id = pokemon.get('id');
+  var
   $div.append('<img src="' + pokemon.escape('image_url') + '">');
   for (var attr in pokemon.attributes) {
     if (attr !== 'image_url') {
@@ -9,6 +10,18 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
     }
   }
   this.$pokeDetail.html($div);
+
+  // this.$pokeDetail.append(
+  //
+  // )
+
+  var $toys = $('<ul class="toys"></ul>');
+  $div.append($toys);
+  pokemon.fetch({
+    success: (function() {
+      this.renderToysList(pokemon.toys());
+    }).bind(this)
+  });
 };
 
 Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
