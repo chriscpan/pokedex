@@ -13,11 +13,11 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
 
 Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
   var selectedPokemon = event.currentTarget;
-  var datapoke = $(selectedPokemon).data('id');
+  var id = $(selectedPokemon).data('id');
   // thing.data('key') => value
   // <thing data-key="value"></thing>
-  var pokemonstar = _.where(this.pokes.models, {id: parseInt(datapoke)});
-  pokemonstar = pokemonstar[0];
-  this.renderPokemonDetail(pokemonstar);
-
+  var pokemonstar = this.pokes.get(id);
+  pokemonstar.fetch({
+    success: this.renderPokemonDetail.bind(this)
+  });
 };
