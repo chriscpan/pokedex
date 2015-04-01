@@ -1,1 +1,3 @@
-json.array! @pokemon, partial: 'pokemon/pokemon', as: :pokemon, display_toys: false
+json.array!(@pokemon) do |pokemon|
+  json.partial!('pokemon', pokemon: pokemon, show_toys: false)
+end
